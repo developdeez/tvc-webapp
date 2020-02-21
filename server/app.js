@@ -15,7 +15,10 @@ import cors from "cors";
 import "./config/cron";
 const schema = require("./graphql");
 const path = require("path");
-require("dotenv").config();
+import * as dotenv from "dotenv";
+
+// loading .env file
+dotenv.config();
 /**
  * Create Express server.
  */
