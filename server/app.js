@@ -15,7 +15,7 @@ import cors from "cors";
 import "./config/cron";
 const schema = require("./graphql");
 const path = require("path");
-const { mongoDBUrl } = require("./config/config");
+const { mongoDBUrl, port } = require("./config/config");
 /**
  * Create Express server.
  */
@@ -94,7 +94,7 @@ app.use(express.static(path.resolve(__dirname, "build")));
 /**
  * Start Express server.
  */
-server.listen(process.env.PORT || 4444, () => {
+server.listen(port, () => {
   new SubscriptionServer(
     {
       execute,
@@ -107,12 +107,8 @@ server.listen(process.env.PORT || 4444, () => {
     }
   );
   console.log(`Process Node: ${process.env.NODE_ENV}`);
-  console.log(
-    `GraphQL Server is now running on localhost:${process.env.PORT}/graphql`
-  );
-  console.log(
-    `Subscriptions are running on localhost:${process.env.PORT}/subscriptions`
-  );
+  console.log(`GraphQL Server is now running on localhost:${port}/graphql`);
+  console.log(`Subscriptions are running on localhost:${port}/subscriptions`);
 });
 
 // quit on ctrl-c when running docker in terminal

@@ -4,9 +4,9 @@ import { ApolloLink, split } from "apollo-link";
 import { getMainDefinition } from "apollo-utilities";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { withClientState } from "apollo-link-state";
-import { apiUrl, webscoketUrl } from "../config";
+import { apiUrl, websocketUrl } from "../config";
 const wsLink = new WebSocketLink({
-  uri: webscoketUrl,
+  uri: websocketUrl,
   options: {
     reconnect: true,
     lazy: true
