@@ -4,7 +4,7 @@ import { ApolloLink, split } from "apollo-link";
 import { getMainDefinition } from "apollo-utilities";
 import { InMemoryCache } from "apollo-cache-inmemory";
 import { withClientState } from "apollo-link-state";
-import { apiUrl, webscoketUrl } from "../../config.js";
+import { apiUrl, webscoketUrl } from "../config";
 const wsLink = new WebSocketLink({
   uri: webscoketUrl,
   options: {

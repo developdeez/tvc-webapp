@@ -15,7 +15,7 @@ import cors from "cors";
 import "./config/cron";
 const schema = require("./graphql");
 const path = require("path");
-const { mongoDBUrl } = require("../config");
+const { mongoDBUrl } = require("./config/config");
 /**
  * Create Express server.
  */

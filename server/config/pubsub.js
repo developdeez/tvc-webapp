@@ -1,5 +1,5 @@
 import { RedisPubSub } from "graphql-redis-subscriptions";
-import { redisHost, redisPort, redisPass } from "../../config";
+import { redisHost, redisPort, redisPass } from "../config/config";
 const Redis = require("ioredis");
 
 const options = {
