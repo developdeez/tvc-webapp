@@ -26,17 +26,27 @@ export default function Dashboard() {
     <div>
       <GridContainer>
         {data.getDashboardMetrics.map(company => {
-          const tableData = company.properties.map(property => [
-            "1/16",
-            property.name,
-            property.lastEngagement.views,
-            property.lastEngagement.likes,
-            property.lastEngagement.retweets,
-            property.lastEngagement.comments,
-            "N/A",
-            property.link
-          ]);
+          const tableData = company.properties.reduce(function(
+            result,
+            property
+          ) {
+            if (property.lastEngagement !== null) {
+              result.push([
+                "1/16",
+                property.name,
+                property.lastEngagement.views,
+                property.lastEngagement.likes,
+                property.lastEngagement.retweets,
+                property.lastEngagement.comments,
+                "N/A",
+                property.link
+              ]);
+            }
 
+            return result;
+          },
+          []);
+          console.log(tableData);
           return (
             <GridItem xs={12} sm={12} md={12} key={company.id}>
               <Card>

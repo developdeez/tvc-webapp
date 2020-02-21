@@ -10,16 +10,16 @@ function getDate() {
 /**
  * Every minutes
  */
-// new CronJob(
-//   "* * * * *",
-//   async function() {
-//     console.log("Cron job: updating metrics @ " + getDate());
-//     const updatedMetrics = await getDashboardMetrics();
-//     await pubsub.publish(NEW_METRICS_ADDED, {
-//       updatedMetrics
-//     });
-//   },
-//   null,
-//   true,
-//   "America/Los_Angeles"
-// );
+new CronJob(
+  "* * * * *",
+  async function() {
+    console.log("Cron job: updating metrics @ " + getDate());
+    const updatedMetrics = await getDashboardMetrics();
+    await pubsub.publish(NEW_METRICS_ADDED, {
+      updatedMetrics
+    });
+  },
+  null,
+  true,
+  "America/Los_Angeles"
+);
