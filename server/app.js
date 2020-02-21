@@ -15,10 +15,7 @@ import cors from "cors";
 import "./config/cron";
 const schema = require("./graphql");
 const path = require("path");
-import * as dotenv from "dotenv";
-
-// loading .env file
-dotenv.config();
+const { mongoDBUrl } = require("../config");
 /**
  * Create Express server.
  */
@@ -36,18 +33,18 @@ var corsOptionsDelegate = function(req, callback) {
 /**
  * Connect to MongoDB.
  */
-mongoose.connect(process.env.MONGOHOST, {
+mongoose.connect(mongoDBUrl, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useFindAndModify: false,
   useUnifiedTopology: true
 });
 mongoose.connection.on("error", function() {
-  console.log("MongoDB error connection to: " + process.env.MONGOHOST);
+  console.log("MongoDB error connection to: " + mongoDBUrl);
   process.exit(1);
 });
 mongoose.connection.on("connected", function() {
-  console.log("Mongoose connected on: " + process.env.MONGOHOST);
+  console.log("Mongoose connected on: " + mongoDBUrl);
 });
 
 /**

@@ -1,10 +1,11 @@
 import { RedisPubSub } from "graphql-redis-subscriptions";
+import { redisHost, redisPort, redisPass } from "../../config";
 const Redis = require("ioredis");
 
 const options = {
-  host: process.env.REDISHOST,
-  port: process.env.REDISPORT,
-  password: process.env.REDISPASS,
+  host: redisHost,
+  port: redisPort,
+  password: redisPass,
   retry_strategy: options => {
     // reconnect after
     return Math.max(options.attempt * 100, 3000);
