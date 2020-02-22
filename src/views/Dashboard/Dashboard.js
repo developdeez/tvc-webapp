@@ -46,7 +46,7 @@ export default function Dashboard() {
             return result;
           },
           []);
-          console.log(tableData);
+
           return (
             <GridItem xs={12} sm={12} md={12} key={company.id}>
               <Card>

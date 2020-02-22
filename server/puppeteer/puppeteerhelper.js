@@ -4,7 +4,7 @@ module.exports.launchBrowser = (debug = false) => {
   return new Promise(async (resolve, reject) => {
     try {
       const browser = await puppeteer.launch({
-        // headless: true,
+        headless: false,
         // executablePath: 'C:\Program Files (x86)\Google\Chrome\Application\chrome.exe',   // Use Windows Browser
         // slowMo: 10,              // Slow down the browser
         // timeout: 0,              // Disable timeout
