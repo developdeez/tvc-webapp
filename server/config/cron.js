@@ -11,7 +11,7 @@ function getDate() {
  * Every minutes
  */
 new CronJob(
-  "* * * * *",
+  "* 1 * * *",
   async function() {
     console.log("Cron job: updating metrics @ " + getDate());
     const updatedMetrics = await getDashboardMetrics();
